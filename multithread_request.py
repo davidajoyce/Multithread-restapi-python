@@ -39,6 +39,7 @@ def create_url_info(url):
 
 
 def single_thread_request(import_urls):
+	print "starting single thread clock"
 	t0 = time.clock()
 
 	for line in import_urls:
@@ -57,6 +58,7 @@ def single_thread_request(import_urls):
 
 
 def multi_thread_request(import_urls):
+	print "start multithread clock"
 	t0 = time.clock()
 	
 	threads = []
@@ -71,6 +73,9 @@ def multi_thread_request(import_urls):
 		
 	for thread in threads:
 		thread.start()
+
+	for thread in threads:
+		thread.join()
 	
 	
 	time_taken = time.clock() - t0
